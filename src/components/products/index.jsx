@@ -12,7 +12,7 @@ function ProductList({name, city, listOfProducts}){
     return(
         <div>
             <h3 className="title">Ecommerce Project</h3>
-            {renderTextBlock(flag)}
+            {renderTextBlock}
             {/* <ProductItem /> */}
             <ul>
                 {
