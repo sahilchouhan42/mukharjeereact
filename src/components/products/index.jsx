@@ -1,19 +1,31 @@
+import { useEffect, useState } from "react"
 import ProductItem from "./component/product-item"
 import './style.css'
 
 
+const initialState = false
+
 function ProductList({name, city, listOfProducts}){
 
-    const flag = true;
-
-    const renderTextBlock=(getFlag)=>{
-        return getFlag?<h4>Name is {name}, he/she is belongs to {city}</h4>:<h4>Hello World!!!</h4>
+    const [flag, setFlag] = useState(initialState);
+    const handleToggleText = ()=>{
+        setFlag(!flag)
     }
+
+    useEffect(()=>{
+        console.log('Load only once')
+    }, [])//this will only run on page load once
+
     return(
         <div>
             <h3 className="title">Ecommerce Project</h3>
-            {renderTextBlock}
+            <button onClick={handleToggleText}>Toggle Text</button>
+            {/* {renderTextBlock} */}
             {/* <ProductItem /> */}
+
+            {
+                flag?<h4>{name} and {city}</h4>: <h4>Hello</h4>
+            }
             <ul>
                 {
                     listOfProducts.map((item,i)=>
